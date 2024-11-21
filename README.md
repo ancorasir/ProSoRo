@@ -5,18 +5,18 @@
 </br>
 Southern University of Science and Technology
 </br></br>
-<img src="assets/prosoro.gif" width="80%">
+<img src="./assets/prosoro.gif" width="80%">
 </div>
 
 ## Overview
 
-**Proprioceptive Soft Robot (ProSoRo)** is a proprioceptive soft robotic system that utilizes miniature vision to track an internal marker within the robot's deformable structure. By monitoring the motion of this single point relative to a fixed boundary, we capture critical information about the robot's overall deformation state, significantly reducing sensing complexity. To process this information, we employ a **multi-modal variational autoencoder (MVAE)** that aligns motion, force, and shape data into a unified latent code, which we term latent proprioception. This framework enables cross-modal inference, allowing us to estimate unobservable modalities such as internal forces and whole-body deformations from easily measured motion data. 
+**Proprioceptive Soft Robot (ProSoRo)** is a proprioceptive soft robotic system that utilizes miniature vision to track an internal marker within the robot's deformable structure. By monitoring the motion of this single point relative to a fixed boundary, we capture critical information about the robot's overall deformation state, significantly reducing sensing complexity. To process this information, we employ a **multi-modal variational autoencoder (MVAE)** that aligns motion, force, and shape data into a unified latent code, which we term latent proprioception. This framework enables cross-modal inference, allowing us to estimate unobservable modalities such as internal forces and whole-body deformations from easily measured motion data.
 
-<div align="center"><img src="assets/framework.jpg" width="100%"></div>
+<div align="center"><img src="./assets/framework.jpg" width="100%"></div>
 
 Within this latent code, we identify "key morphing primitives" that correspond to fundamental deformation modes. By systematically varying these latent components, we can generate a spectrum of deformation behaviors, offering a novel perspective on soft robotic systems' intrinsic dimensionality and controllability. This understanding enhances the interpretability of the latent code and facilitates the development of more sophisticated control strategies and advanced human-robot interfaces.
 
-<div align="center"><img src="assets/latent_code.jpg" width="80%"></div>
+<div align="center"><img src="./assets/latent_code.jpg" width="80%"></div>
 
 The training data of MVAE is from finite element analysis (FEA) in Abaqus. To minimize the sim2real gap, we developed **Evolutionary Optimization for Material Identification with Abaqus (EVOMIA)**, which is a method for material parameter identification based on experimental data. Method details can be found in [EVOMIA](https://github.com/ancorasir/EVOMIA).
 
@@ -62,13 +62,13 @@ It's also available to use the modules provided in `modules/` and test on a real
 
 ProSoRo hardware consists of a metastructure, a camera, LED lights and several 3D-printed parts. There are six types of ProSoRos, including cylinder, octagonal prism, quadrangular prism, origami, omni-neck, and dome. All ProSoRos are with similar structure and based on the same vision-based proprioception method. More building details can be found in [hardware guide](https://sites.google.com/view/prosoro-hardware).
 
-<div align="center"><img src="assets/hardware.jpg" width="80%"></div>
+<div align="center"><img src="./assets/hardware.jpg" width="80%"></div>
 
 But it's not necessary to have the hardware if you just want to run the code. It's available to train and test in the simulation environment.
 
 ## License
 
-This repository is released under the [MIT License](LICENSE).
+This repository is released under the [MIT License](./LICENSE).
 
 ## Acknowledgements
 
