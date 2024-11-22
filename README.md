@@ -74,6 +74,6 @@ This repository is released under the [MIT License](./LICENSE).
 
 ## Acknowledgements
 
-- **Pytorch Lightning**: We use [Pytorch Lightning 2.0](https://github.com/Lightning-AI/pytorch-lightning) by [Lightning AI](https://lightning.ai/) as the training framework, and started from the [official docs](https://lightning.ai/docs/pytorch/stable/).
+- **Pytorch Lightning**: We use [Pytorch Lightning](https://github.com/Lightning-AI/pytorch-lightning) by [Lightning AI](https://lightning.ai/) as the training framework, and started from the [official docs](https://lightning.ai/docs/pytorch/stable/).
 - **Abaqus**: We use [Abaqus 2022](https://www.3ds.com/products-services/simulia/products/abaqus/) as the simulation software, and build up the simulation pipeline and python scripts.
 - **Plotly**: We use [Plotly](https://plotly.com) to visualize the results of the model, and build up a interface for ProSoRo using [Dash](https://dash.plotly.com).
