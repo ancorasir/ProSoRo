@@ -10,7 +10,7 @@ Southern University of Science and Technology
 
 ## Overview
 
-**Proprioceptive Soft Robot (ProSoRo)** is a proprioceptive soft robotic system that utilizes miniature vision to track an internal marker within the robot's deformable structure. By monitoring the motion of this single point relative to a fixed boundary, we capture critical information about the robot's overall deformation state, significantly reducing sensing complexity. To harness the full potential of this anchor-based approach, we developed a multi-modal proprioception learning framework utilizing a multi-modal variational autoencoder (MVAE) to align motion, force, and shape of ProSoRos into a unified representation based on an anchored observation, involving three stages:
+**Proprioceptive Soft Robot (ProSoRo)** is a proprioceptive soft robotic system that utilizes miniature vision to track an internal marker within the robot's deformable structure. By monitoring the motion of this single point relative to a fixed boundary, we capture critical information about the robot's overall deformation state, significantly reducing sensing complexity. To harness the full potential of this anchor-based approach, we developed a multi-modal proprioception learning framework utilizing a **multi-modal variational autoencoder (MVAE)** to align motion, force, and shape of ProSoRos into a unified representation based on an anchored observation, involving three stages:
 
 ![Framework](./assets/framework.jpg)
 
@@ -18,7 +18,7 @@ Southern University of Science and Technology
 - **Latent proprioceptive learning**: The simulation dataset was generated using the optimized material parameters and provided motion in $[D_x, D_y, D_z, R_x, R_y, R_z]^\mathrm{T}$, force in $[F_x, F_y, F_z, T_x, T_y, T_z]^\mathrm{T}$, and shape in node displacements of $[n_x, n_y, n_z]_{3n}^\mathrm{T}$ as the training inputs. To learn these modalities for explicit proprioception, we developed a multi-modal variational autoencoder (MVAE) to encode the ProSoRo's proprioception via latent codes. Three modal latent codes are generated through three specific motion, force, and shape encoders, and the shared code contains fused information from all three modalities by minimizing the errors among the three codes. As a result, the shared codes provide explicit proprioception in the latent space, denoted as latent proprioception, which can be used to reconstruct the three modalities using specific decoders for applied interactions.
 - **Cross-modal inference**: In real-world deployments, the shape modality, for example, can be estimated from latent proprioception instead of direct measurement, which is usually impossible to achieve in real-time interactions in robotics. At this stage, we visually capture the ProSoRo’s anchor point as MVAE's input to estimate the force and shape modalities based on the latent knowledge learned from simulation data. We found that our proposed latent proprioception framework to be a versatile solution in soft robotic interactions.
 
-Within the latent code, we identify "key morphing primitives" that correspond to fundamental deformation modes. By systematically varying these latent components, we can generate a spectrum of deformation behaviors, offering a novel perspective on soft robotic systems' intrinsic dimensionality and controllability. This understanding enhances the interpretability of the latent code and facilitates the development of more sophisticated control strategies and advanced human-robot interfaces.
+Within the latent code, we identify **key morphing primitives** that correspond to fundamental deformation modes. By systematically varying these latent components, we can generate a spectrum of deformation behaviors, offering a novel perspective on soft robotic systems' intrinsic dimensionality and controllability. This understanding enhances the interpretability of the latent code and facilitates the development of more sophisticated control strategies and advanced human-robot interfaces.
 
 ![Latent Code](./assets/latent_code.jpg)
 
@@ -74,6 +74,6 @@ This repository is released under the [MIT License](./LICENSE).
 
 ## Acknowledgements
 
-- **Pytorch Lightning**: We use [Pytorch Lightning 2.0](https://github.com/Lightning-AI/pytorch-lightning) by [Lightning AI](https://lightning.ai/) as the training framework, and started from the [official docs](https://lightning.ai/docs/pytorch/stable/).
+- **Pytorch Lightning**: We use [Pytorch Lightning](https://github.com/Lightning-AI/pytorch-lightning) by [Lightning AI](https://lightning.ai/) as the training framework, and started from the [official docs](https://lightning.ai/docs/pytorch/stable/).
 - **Abaqus**: We use [Abaqus 2022](https://www.3ds.com/products-services/simulia/products/abaqus/) as the simulation software, and build up the simulation pipeline and python scripts.
 - **Plotly**: We use [Plotly](https://plotly.com) to visualize the results of the model, and build up a interface for ProSoRo using [Dash](https://dash.plotly.com).
