@@ -68,7 +68,7 @@ The data corresponding to figures in the paper can be found in [Source Data](./a
 
 ## Hardware
 
-ProSoRo hardware consists of a metastructure, a camera, LED lights and several 3D-printed parts. There are six types of ProSoRos, including cylinder, octagonal prism, quadrangular prism, origami, omni-neck, and dome. All ProSoRos are with similar structure and based on the same vision-based proprioception method. More building details can be found in [hardware guide](https://sites.google.com/view/prosoro-hardware).
+ProSoRo hardware consists of a metastructure, a camera, LED lights and several 3D-printed parts. There are six types of ProSoRos, including cylinder, octagonal prism, quadrangular prism, origami, omni-neck, and dome. All ProSoRos are with similar structure and based on the same vision-based proprioception method. More building details can be found in [Hardware Guide](https://sites.google.com/view/prosoro-hardware).
 
 ![Hardware](./assets/img/hardware.jpg)
 
