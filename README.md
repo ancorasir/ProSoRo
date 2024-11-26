@@ -62,7 +62,7 @@ It's also available to use the modules provided in `modules/` and test on a real
 
 ## Source Data
 
-The source data corresponding to figures in the paper can be found in [Source Data](./assets/source_data/).
+The data corresponding to figures in the paper can be found in [Source Data](./assets/source_data/).
 
 ## Hardware
 
