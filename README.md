@@ -60,6 +60,10 @@ Here we provide a [guide](guide.ipynb) to train and test ProSoRo. You can run th
 
 It's also available to use the modules provided in `modules/` and test on a real ProSoRo hardware. More details can be found in the [guide](guide.ipynb).
 
+## Source Data
+
+The source data corresponding to figures in the paper can be found in [Source Data](./assets/source_data/).
+
 ## Hardware
 
 ProSoRo hardware consists of a metastructure, a camera, LED lights and several 3D-printed parts. There are six types of ProSoRos, including cylinder, octagonal prism, quadrangular prism, origami, omni-neck, and dome. All ProSoRos are with similar structure and based on the same vision-based proprioception method. More building details can be found in [hardware guide](https://sites.google.com/view/prosoro-hardware).
