@@ -9,17 +9,13 @@ models/
 ├── README.md
 ├── mvae.py                         # MVAE model
 ├── data_module.py                  # Data module for PyTorch Lightning
-└── pths/                           # Trained models
+└── checkpoints/                    # Trained models
     └── ...
 ```
 
 ## MVAE Model
 
-The Multimodal Variational Autoencoder (MVAE) model is used to learn the latent space of the simulation data, including the poses, forces, and 3D shapes. The model is implemented in `mvae.py`. The model architecture is:
-
-<div align="center"><img src="../assets/mvae.jpg" width="100%"></div>
-
-The model consists of three encoders and three decoders, each of which is responsible for encoding and decoding the poses, forces, and 3D shapes, respectively. The encoders and decoders are implemented as multi-layer perceptrons (MLPs) with two hidden layers. The latent space is a series of Gaussian distributions. Here are the hyperparameters of the MVAE model:
+The Multimodal Variational Autoencoder (MVAE) model is used to learn the latent space of the simulation data, including the poses, forces, and 3D shapes. The model is implemented in `mvae.py`. The model consists of three encoders and three decoders, each of which is responsible for encoding and decoding the poses, forces, and 3D shapes, respectively. The encoders and decoders are implemented as multi-layer perceptrons (MLPs) with two hidden layers. The latent space is a series of Gaussian distributions. Here are the hyperparameters of the MVAE model:
 
 - `recon_pred_scale`: the scale of reconstruction and prediction loss.
 - `z_coeff`: the coefficient of the MSE loss of the latent variable.
@@ -36,7 +32,7 @@ The data module is used to load the training data for PyTorch Lightning. The dat
 
 ## Trained Models
 
-The trained MVAE models are stored in the `pths/` directory. The models are saved as `mvae_{module_type}_{recon_pred_scale}_{z_coeff}_{kl_coeff}_{z_dim}.pth` and can be loaded using `torch.load()` function.
+The trained MVAE models are stored in the `checkpoints/` directory. The models are saved as `mvae_{module_type}_{recon_pred_scale}_{z_coeff}_{kl_coeff}_{z_dim}.pth` and can be loaded using `torch.load()` function.
 
 ## Training and testing
 
