@@ -27,4 +27,4 @@ Data for each module are stored in a separate directory named by the module type
 
 ## Data Generation
 
-Please follow the [guide](../guide.ipynb) to generate the data. You can also download the pre-generated data from the [dataset](https://drive.google.com/drive/folders/1DLtiRO6jbu13QDrZpORM2CHrvn-JiiRk?usp=sharing).
+Pleasefollow the [guide](../guide.ipynb) to generate the data. You can also download the pre-generated data from the [dataset](https://drive.google.com/drive/folders/1DLtiRO6jbu13QDrZpORM2CHrvn-JiiRk?usp=sharing).
