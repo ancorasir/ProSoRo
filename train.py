@@ -9,7 +9,6 @@ from models.data_module import DataModule
 from models.mvae import MVAE
 
 
-# Set the training function
 def train(
     module_type: str = "cylinder",
     recon_pred_scale: float = 1,
