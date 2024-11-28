@@ -5,7 +5,7 @@
 </br>
 Southern University of Science and Technology
 </br></br>
-<a href="https://prosoro.github.io">[Project Page]</a> <a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a>
+<a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a>
 </br></br>
 <img src="./assets/img/teaser.gif" width="80%">
 </div>
