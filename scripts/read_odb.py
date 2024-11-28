@@ -12,7 +12,7 @@ import csv
 module_type = sys.argv[-1]
 
 # Set path
-path = "data/" + module_type + "/"
+path = "./data/" + module_type + "/"
 odb_path = os.path.join(path, "abq_file/")
 
 # Get odb file names
