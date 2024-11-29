@@ -18,7 +18,6 @@ def train(
 ) -> None:
     """Train the MVAE model.
 
-    In this function, the MVAE model is trained with the given parameters.
     The trained model is saved in the './models/pths' folder.
     The log files are saved in the './lightning_logs' folder.
 
@@ -36,8 +35,8 @@ def train(
     h1_dim = config["h1_dim"]
     h2_dim = config["h2_dim"]
     recon_pred_scale = config["recon_pred_scale"]
-    kl_coeff = config["kl_coeff"]
-    z_coeff = config["z_coeff"]
+    kl_coef = config["kl_coef"]
+    z_coef = config["z_coef"]
 
     ## DataModule
     dm = DataModule(object=object, batch_size=batch_size, num_workers=8)
@@ -63,8 +62,8 @@ def train(
         z_dim=z_dim,
         lr=lr,
         recon_pred_scale=recon_pred_scale,
-        z_coeff=z_coeff,
-        kl_coeff=kl_coeff,
+        z_coef=z_coef,
+        kl_coef=kl_coef,
     )
 
     ## Training
@@ -84,9 +83,9 @@ def train(
         + "_"
         + str(recon_pred_scale)
         + "_"
-        + str(z_coeff)
+        + str(z_coef)
         + "_"
-        + str(kl_coeff)
+        + str(kl_coef)
         + "_"
         + str(z_dim)
         + ".pth",
@@ -100,9 +99,9 @@ def train(
         + "_"
         + str(recon_pred_scale)
         + "_"
-        + str(z_coeff)
+        + str(z_coef)
         + "_"
-        + str(kl_coeff)
+        + str(kl_coef)
         + "_"
         + str(z_dim)
     )

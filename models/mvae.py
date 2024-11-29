@@ -8,25 +8,17 @@ from torch.nn import functional as F
 
 
 class MVAE(LightningModule):
-    """Multitask Variational Autoencoder (MVAE)
+    """Multi-modal Variational Autoencoder (MVAE)
 
-    MVAE is a multitask learning model that can learn the shared information among the tasks.
-    In this work, the MVAE model is to represent the pose, force, and nodes of soft prisms.
+    MVAE is a multi-modal learning model that can learn the shared information among different modalities.
+    In this work, the MVAE model is to represent the motion, force, and shape of ProSoRo.
 
-    Input: pose, force, and nodes
-    Output: pose, force, and nodes
+    Input: motion, force, and shape
+    Output: motion, force, and shape
 
-    pose: the pose (Dx, Dy, Dz, Rx, Ry, Rz) of the top surface
+    motion: the motion (Dx, Dy, Dz, Rx, Ry, Rz) of the top surface
     force: the forces and torques (Fx, Fy, Fz, Tx, Ty, Tz) at the bottom surface
-    nodes: the displacements (Dx, Dy, Dz) of the nodes on the surface or the central line
-
-    Both reconstruction and prediction are considered in the loss function.
-    KL divergence is used to regularize the latent space distribution.
-    Three VAEs are used to encode the pose, force, and nodes, respectively.
-    The latent space is shared among the three VAEs by minimizing the MSE loss.
-    By minimizing the MSE loss, the model can learn the shared information among the three VAEs.
-    This information enables the forward prediction transfer among the three VAEs,
-    which is the key to the multitask learning.
+    shape: the displacements (Dx, Dy, Dz) of the nodes on the surface
     """
 
     def __init__(
@@ -37,22 +29,11 @@ class MVAE(LightningModule):
         z_dim: int = 32,
         lr: float = 1e-4,
         recon_pred_scale: float = 1,
-        z_coeff: float = 1,
-        kl_coeff: float = 1,
+        z_coef: float = 1,
+        kl_coef: float = 1,
         **kwargs,
     ) -> None:
         """Initialize the MVAE model.
-
-        Model Architecture:
-            Encoder: multi-layer perceptron (MLP)
-            Decoder: multi-layer perceptron (MLP)
-            Latent space: z_dim
-
-        Model Loss:
-            Reconstruction Loss: MSE
-            Prediction Loss: MSE
-            KL Divergence Loss: KL Divergence
-            Z Loss: MSE
 
         Args:
             x_dim: the dimension of the input data
@@ -60,13 +41,9 @@ class MVAE(LightningModule):
             h2_dim: the dimentsion of the hidden layer 2
             z_dim: dim of z space
             lr: learning rate for Adam
-            recon_coeff: coresponds to alpha in the paper
-            pred_coeff: coresponds to (1 - alpha) in the paper
-            z_coeff: coresponds to zeta in the paper
-            kl_coeff: coresponds to gamma in the paper
-
-        Returns:
-            None
+            recon_pred_scale: the scale for the reconstruction and prediction loss
+            z_coef: the coefficient for the latent loss
+            kl_coef: the coefficient for the KL divergence
         """
 
         # Call the super constructor
@@ -80,8 +57,8 @@ class MVAE(LightningModule):
         self.h1_dim = h1_dim
         self.h2_dim = h2_dim
         self.recon_pred_scale = recon_pred_scale
-        self.z_coeff = z_coeff
-        self.kl_coeff = kl_coeff
+        self.z_coef = z_coef
+        self.kl_coef = kl_coef
 
         # Define the model architecture
         for i in range(len(self.x_dim)):
@@ -411,8 +388,8 @@ class MVAE(LightningModule):
         loss = (
             self.recon_pred_scale / (1 + self.recon_pred_scale) * recon_loss
             + 1 / (1 + self.recon_pred_scale) * pred_loss
-            + self.kl_coeff * kl
-            + self.z_coeff * z_loss
+            + self.kl_coef * kl
+            + self.z_coef * z_loss
         )
         # Store the data
         logs["loss"] = loss
