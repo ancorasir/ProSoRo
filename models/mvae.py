@@ -31,9 +31,9 @@ class MVAE(LightningModule):
 
     def __init__(
         self,
-        x_dim_list: list = [6, 6, 2136],
-        h1_dim_list: list = [8, 8, 512],
-        h2_dim_list: list = [16, 16, 128],
+        x_dim: list = [6, 6, 2136],
+        h1_dim: list = [8, 8, 512],
+        h2_dim: list = [16, 16, 128],
         z_dim: int = 32,
         lr: float = 1e-4,
         recon_pred_scale: float = 1,
@@ -55,9 +55,9 @@ class MVAE(LightningModule):
             Z Loss: MSE
 
         Args:
-            x_dim_list: the dimension of the input data
-            h1_dim_list: the dimension of the hidden layer 1
-            h2_dim_list: the dimentsion of the hidden layer 2
+            x_dim: the dimension of the input data
+            h1_dim: the dimension of the hidden layer 1
+            h2_dim: the dimentsion of the hidden layer 2
             z_dim: dim of z space
             lr: learning rate for Adam
             recon_coeff: coresponds to alpha in the paper
@@ -76,23 +76,23 @@ class MVAE(LightningModule):
         self.save_hyperparameters()
         self.lr = lr
         self.z_dim = z_dim
-        self.x_dim_list = x_dim_list
-        self.h1_dim_list = h1_dim_list
-        self.h2_dim_list = h2_dim_list
+        self.x_dim = x_dim
+        self.h1_dim = h1_dim
+        self.h2_dim = h2_dim
         self.recon_pred_scale = recon_pred_scale
         self.z_coeff = z_coeff
         self.kl_coeff = kl_coeff
 
         # Define the model architecture
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # Encoder
             setattr(
                 self,
                 f"encoder_{i}",
                 nn.Sequential(
-                    nn.Linear(self.x_dim_list[i], self.h1_dim_list[i]),
+                    nn.Linear(self.x_dim[i], self.h1_dim[i]),
                     nn.ReLU(),
-                    nn.Linear(self.h1_dim_list[i], self.h2_dim_list[i]),
+                    nn.Linear(self.h1_dim[i], self.h2_dim[i]),
                 ),
             )
             # Decoder
@@ -100,16 +100,16 @@ class MVAE(LightningModule):
                 self,
                 f"decoder_{i}",
                 nn.Sequential(
-                    nn.Linear(self.z_dim, self.h2_dim_list[i]),
+                    nn.Linear(self.z_dim, self.h2_dim[i]),
                     nn.ReLU(),
-                    nn.Linear(self.h2_dim_list[i], self.h1_dim_list[i]),
+                    nn.Linear(self.h2_dim[i], self.h1_dim[i]),
                     nn.ReLU(),
-                    nn.Linear(self.h1_dim_list[i], self.x_dim_list[i]),
+                    nn.Linear(self.h1_dim[i], self.x_dim[i]),
                 ),
             )
             # mu and var
-            setattr(self, f"fc_mu_{i}", nn.Linear(self.h2_dim_list[i], self.z_dim))
-            setattr(self, f"fc_var_{i}", nn.Linear(self.h2_dim_list[i], self.z_dim))
+            setattr(self, f"fc_mu_{i}", nn.Linear(self.h2_dim[i], self.z_dim))
+            setattr(self, f"fc_var_{i}", nn.Linear(self.h2_dim[i], self.z_dim))
 
     @staticmethod
     def pretrained_weights_available():
@@ -210,7 +210,7 @@ class MVAE(LightningModule):
         z_list = []
 
         # Predict the z code
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # Encoder
             z = self.x_to_z_encoder(x_list[i], i)
             # Store the data
@@ -233,7 +233,7 @@ class MVAE(LightningModule):
         x_hat_list = []
 
         # Forward the model
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # Encoder
             z = self.x_to_z_encoder(x_list[i], i)
             # Decoder
@@ -301,7 +301,7 @@ class MVAE(LightningModule):
         var_list = []
 
         # Run the step
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # Encoder
             h = getattr(self, f"encoder_{i}")(x_list[i])
             # mu and var
@@ -341,8 +341,8 @@ class MVAE(LightningModule):
         x_list = []
         x_start = 0
         x_end = 0
-        for i in range(len(self.x_dim_list)):
-            x_end += self.x_dim_list[i]
+        for i in range(len(self.x_dim)):
+            x_end += self.x_dim[i]
             x_i = x[:, x_start:x_end]
             x_list.append(x_i)
             x_start = x_end
@@ -355,7 +355,7 @@ class MVAE(LightningModule):
 
         # Calculate the reconstruction loss
         recon_loss_list = []
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # MSE loss
             recon_loss_i = F.mse_loss(x_hat_list[i], x_list[i], reduction="mean")
             # Store the data
@@ -368,7 +368,7 @@ class MVAE(LightningModule):
 
         # Calculate the prediction loss
         pred_loss_list = []
-        for i in range(len(self.x_dim_list) - 1):
+        for i in range(len(self.x_dim) - 1):
             # Predict the x
             x_pred = self.forward_with_index(x_list[0], 0, i + 1)
             # MSE loss
@@ -383,7 +383,7 @@ class MVAE(LightningModule):
 
         # Calculate the KL divergence loss
         kl_list = []
-        for i in range(len(self.x_dim_list)):
+        for i in range(len(self.x_dim)):
             # KL divergence
             kl_i = (
                 q_list[i].log_prob(z_list[i]) - p_list[i].log_prob(z_list[i])
@@ -398,8 +398,8 @@ class MVAE(LightningModule):
 
         # Calculate the z loss
         z_loss_list = []
-        for i in range(len(self.x_dim_list) - 1):
-            for j in range(i + 1, len(self.x_dim_list)):
+        for i in range(len(self.x_dim) - 1):
+            for j in range(i + 1, len(self.x_dim)):
                 # MSE loss
                 z_loss_list.append(F.mse_loss(z_list[i], z_list[j], reduction="mean"))
         # Average the loss

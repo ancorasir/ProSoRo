@@ -48,7 +48,7 @@ class ProSoRo(Dataset):
 class DataModule(LightningDataModule):
     def __init__(
         self,
-        module_type: str = "cylinder",
+        object: str = "cylinder",
         train_val_split: Tuple[float, float] = (0.875, 0.125),
         batch_size: int = 128,
         num_workers: int = 4,
@@ -57,7 +57,7 @@ class DataModule(LightningDataModule):
         """Data module for the soft module dataset.
 
         Args:
-            module_type: str, the type of the module
+            object: str, the object name
             node_type: str, the type of the node
             data_size: int, the size of the data
             train_val_split: tuple, the split ratio of the training and validation data
@@ -71,7 +71,7 @@ class DataModule(LightningDataModule):
 
         super().__init__()
 
-        self.module_type = module_type
+        self.object = object
         self.train_val_split = train_val_split
         self.batch_size = batch_size
         self.num_workers = num_workers
@@ -97,7 +97,7 @@ class DataModule(LightningDataModule):
         The `stage` can be used to differentiate whether the `setup()` is called before trainer.fit()` or `trainer.test()`.
         """
         if not self.data_train or not self.data_val or not self.data_test:
-            source_path = "data/" + self.module_type + "/"
+            source_path = "data/" + self.object + "/"
             file_path = source_path + "/training_data.npy"
 
             # normalize the data
@@ -155,7 +155,7 @@ class DataModule(LightningDataModule):
 
 if __name__ == "__main__":
     data_module = DataModule(
-        module_type="cylinder",
+        object="cylinder",
         node_type="surface",
         train_val_split=(0.875, 0.125),
         batch_size=128,
