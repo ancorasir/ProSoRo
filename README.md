@@ -6,9 +6,9 @@
 Southern University of Science and Technology
 </br>
 <!-- <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://msvc-dlrg.github.io/images/logo/sustech_dark.png">
-<source media="(prefers-color-scheme: light)" srcset="https://msvc-dlrg.github.io/images/logo/sustech_light.png">
-<img src="https://msvc-dlrg.github.io/images/logo/sustech_light.png" width="250px" alt="logo">
+<source media="(prefers-color-scheme: dark)" srcset="./images/logo/sustech_dark.png">
+<source media="(prefers-color-scheme: light)" srcset="./images/logo/sustech_light.png">
+<img src="./images/logo/sustech_light.png" width="250px" alt="logo">
 </picture> -->
 </br>
 <a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a>
