@@ -1,7 +1,7 @@
 # ProSoRo: Anchoring Morphological Representations Unlocks Latent Proprioception in Soft Robots
 
 <div align="center">
-<a href="https://hanxudong.cc">Xudong Han</a>, <a href="https://gabriel-ning.github.io">Ning Guo</a>, <a href="https://maindl.ancorasir.com">Fang Wan</a>, <a href="https://www.wzhanglab.site">Wei Zhang</a>, <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a>
+<a href="https://hanxudong.cc">Xudong Han</a>, <a href="https://gabriel-ning.github.io">Ning Guo</a>, <a href="https://www.wzhanglab.site">Wei Zhang</a>, <a href="https://maindl.ancorasir.com">Fang Wan</a>, <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a>
 </br>
 Southern University of Science and Technology
 </br>
