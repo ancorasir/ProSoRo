@@ -11,7 +11,7 @@ Southern University of Science and Technology
 <img src="./images/logo/sustech_light.png" width="250px" alt="logo">
 </picture> -->
 </br>
-<a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a>
+<!-- <a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a> -->
 </br></br>
 <img src="./assets/img/teaser.gif" width="80%">
 </div>
