@@ -4,13 +4,13 @@
 <a href="https://hanxudong.cc">Xudong Han</a>, <a href="https://gabriel-ning.github.io">Ning Guo</a>, <a href="">Ronghan Xu</a>, <a href="https://www.wzhanglab.site">Wei Zhang</a>, <a href="https://faculty.sustech.edu.cn/?tagid=hongw&go=2&lang=en">Wei Hong</a>, <a href="https://maindl.ancorasir.com">Fang Wan</a>, <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a>
 </br>
 Southern University of Science and Technology
-</br>
+<!-- </br> -->
 <!-- <picture>
 <source media="(prefers-color-scheme: dark)" srcset="./images/logo/sustech_dark.png">
 <source media="(prefers-color-scheme: light)" srcset="./images/logo/sustech_light.png">
 <img src="./images/logo/sustech_light.png" width="250px" alt="logo">
 </picture> -->
-</br>
+<!-- </br> -->
 <!-- <a href="https://sites.google.com/view/prosoro-hardware">[Hardware Guide]</a> <a href="./assets/source_data/">[Source Data]</a> -->
 </br></br>
 <img src="./assets/img/teaser.gif" width="80%">
