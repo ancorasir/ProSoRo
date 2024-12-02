@@ -43,7 +43,7 @@ Then, download the latest release and install the dependencies:
 
 ```bash
 git clone https://github.com/ancorasir/ProSoRo.git
-cd soft-proprioceptive-module
+cd ProSoRo
 pip install -r requirements.txt
 ```
 
