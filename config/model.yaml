@@ -1,0 +1,8 @@
+object: cylinder
+x_dim: [6, 6, 2736]
+z_dim: 32
+h1_dim: [16, 16, 1024]
+h2_dim: [32, 32, 256]
+recon_pred_scale: 1.0
+kl_coef: 0.1
+z_coef: 1.0

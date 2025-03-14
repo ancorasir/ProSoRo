@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+// Namespace
+package DisplacementFiled;
+
+message NodeList
+{	
+    int32 nodes_number = 1;
+    // {x, y, z,  r_x, r_y, r_z}
+    repeated double dpose = 2;
+    repeated double nodes = 3;
+}
+
