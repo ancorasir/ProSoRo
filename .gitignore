@@ -169,4 +169,3 @@ lightning_logs/
 # abaqus
 *.rpy*
 *.jnl
-*.cae
