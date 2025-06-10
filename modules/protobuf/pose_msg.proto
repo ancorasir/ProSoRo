@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+// Namespace
+package ArucoMarker;
+
+message Pose
+{
+    repeated double position = 1;
+    // consistent with OpenCV rotation vector
+    // See OpenCV@ref Rodrigues {r_x, r_y, r_z}
+    repeated double rotation = 2;
+}
